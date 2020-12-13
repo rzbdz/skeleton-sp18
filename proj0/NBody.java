@@ -59,20 +59,8 @@ public class NBody {
             double[] xForces = new double[planets.length];
             double[] yForces = new double[planets.length];
             for (int i = 0; i < planets.length; i++) {
-                var xForceSum = 0.;
-                var yForceSum = 0.;
-                for (int j = 0; j < planets.length; j++) {
-                    if (i == j)
-                        continue;
-                    var febx = planets[i].calcNetForceExertedByX(planets[j]);
-                    var feby = planets[i].calcNetForceExertedByY(planets[j]);
-                    var xForceDiNeg = planets[j].xxPos < planets[i].xxPos;
-                    var yForceDiNeg = planets[j].yyPos < planets[i].yyPos;
-                    xForceSum += xForceDiNeg ? -febx : febx;
-                    yForceSum += yForceDiNeg ? -feby : feby;
-                }
-                xForces[i] = xForceSum;
-                yForces[i] = yForceSum;
+                xForces[i] = planets[i].calcNetForceExertedByX(planets);
+                yForces[i] = planets[i].calcNetForceExertedByY(planets);
             }
             for (int i = 0; i < planets.length; i++) {
                 planets[i].update(dt, xForces[i], yForces[i]);

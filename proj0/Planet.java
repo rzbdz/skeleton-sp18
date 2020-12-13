@@ -49,14 +49,36 @@ public class Planet {
         return calcForceExertedBy(p) * dc / d;
     }
 
-    public double calcNetForceExertedByX(Planet p) {
+    public double calcForceExertedByX(Planet p) {
         return calcForceExertedByCoordinate(this.xxPos, p.xxPos, p);
     }
 
-    public double calcNetForceExertedByY(Planet p) {
+    public double calcForceExertedByY(Planet p) {
         return calcForceExertedByCoordinate(this.yyPos, p.yyPos, p);
     }
 
+    public double calcNetForceExertedByX(Planet[]planets){
+        var xForceSum = 0.;
+        for (int j = 0; j < planets.length; j++) {
+            if (this.imgFileName == planets[j].imgFileName)
+                continue;
+            var febx = this.calcForceExertedByX(planets[j]);
+            var xForceDiNeg = planets[j].xxPos < this.xxPos;
+            xForceSum += xForceDiNeg ? -febx : febx;
+        }
+        return xForceSum;
+    }
+    public double calcNetForceExertedByY(Planet[]planets){
+        var yForceSum = 0.;
+        for (int j = 0; j < planets.length; j++) {
+            if (this.imgFileName == planets[j].imgFileName)
+                continue;
+            var feby = this.calcForceExertedByY(planets[j]);
+            var yForceDiNeg = planets[j].yyPos < this.yyPos;
+            yForceSum += yForceDiNeg ? -feby : feby;
+        }
+        return yForceSum;
+    }
     private void updateVelXandPosX(double a, double dt){
         this.xxVel += a*dt;
         this.xxPos += this.xxVel*dt;

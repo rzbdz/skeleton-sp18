@@ -51,9 +51,9 @@ public class TestCalcForceExertedByXY {
         Planet p2 = new Planet(2.0, 1.0, 3.0, 4.0, 4e11, "jupiter.gif");
         Planet p3 = new Planet(4.0, 5.0, 3.0, 4.0, 5.0, "jupiter.gif");
 
-        checkEquals(p1.calcNetForceExertedByX(p2), 133.4, "calcForceExertedByX()", 0.01);
-        checkEquals(p1.calcNetForceExertedByX(p3), 4.002e-11, "calcForceExertedByX()", 0.01);
-        checkEquals(p1.calcNetForceExertedByY(p2), 0.0, "calcForceExertedByY()", 0.01);
-        checkEquals(p1.calcNetForceExertedByY(p3), 5.336e-11, "calcForceExertedByY()", 0.01);
+        checkEquals(p1.calcForceExertedByX(p2), 133.4, "calcForceExertedByX()", 0.01);
+        checkEquals(p1.calcForceExertedByX(p3), 4.002e-11, "calcForceExertedByX()", 0.01);
+        checkEquals(p1.calcForceExertedByY(p2), 0.0, "calcForceExertedByY()", 0.01);
+        checkEquals(p1.calcForceExertedByY(p3), 5.336e-11, "calcForceExertedByY()", 0.01);
     }
 }
