@@ -64,8 +64,8 @@ public class NBody {
                 for (int j = 0; j < planets.length; j++) {
                     if (i == j)
                         continue;
-                    var febx = planets[i].calcForceExertedByX(planets[j]);
-                    var feby = planets[i].calcForceExertedByY(planets[j]);
+                    var febx = planets[i].calcNetForceExertedByX(planets[j]);
+                    var feby = planets[i].calcNetForceExertedByY(planets[j]);
                     var xForceDiNeg = planets[j].xxPos < planets[i].xxPos;
                     var yForceDiNeg = planets[j].yyPos < planets[i].yyPos;
                     xForceSum += xForceDiNeg ? -febx : febx;

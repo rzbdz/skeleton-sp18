@@ -49,11 +49,11 @@ public class Planet {
         return calcForceExertedBy(p) * dc / d;
     }
 
-    public double calcForceExertedByX(Planet p) {
+    public double calcNetForceExertedByX(Planet p) {
         return calcForceExertedByCoordinate(this.xxPos, p.xxPos, p);
     }
 
-    public double calcForceExertedByY(Planet p) {
+    public double calcNetForceExertedByY(Planet p) {
         return calcForceExertedByCoordinate(this.yyPos, p.yyPos, p);
     }
 
