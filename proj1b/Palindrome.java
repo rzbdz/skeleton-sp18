@@ -1,4 +1,9 @@
+import java.util.Objects;
+
 public class Palindrome {
+    public Palindrome() {
+    }
+
     /* string to deque in order */
     public Deque<Character> wordToDeque(String word) {
         ArrayDeque<Character> deque = new ArrayDeque<Character>();
@@ -9,14 +14,13 @@ public class Palindrome {
         return deque;
     }
 
-    public Palindrome() {
-
+    public boolean isPalindrome(String word) {
+        return isPalindromeSimpleLoop(word, Objects::equals);
+        //return isRecursive ? isPalindromeRecursive(word) : isPalindromeWithDeque(word);
     }
-
-    private boolean isRecursive;
-
-    public Palindrome(boolean isRecursive) {
-        this.isRecursive = isRecursive;
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        return isPalindromeSimpleLoop(word, cc);
+        //return isRecursive ? isPalindromeRecursive(word) : isPalindromeWithDeque(word);
     }
 
     private boolean isPalindromeWithDeque(String word) {
@@ -31,9 +35,19 @@ public class Palindrome {
         return true;
     }
 
-    public boolean isPalindrome(String word) {
-        return isPalindromeSimpleLoop(word);
-        //return isRecursive ? isPalindromeRecursive(word) : isPalindromeWithDeque(word);
+    private boolean isPalindromeSimpleLoop(String word, CharacterComparator cc){
+        int length = word.length();
+        if (length <= 1) {
+            return true;
+        }
+        for (int i = 0; i < length / 2; i++) {
+            char c1 = word.charAt(i);
+            char c2 = word.charAt(length-i-1);
+            if (!cc.equalChars(c1, c2)){
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean isPalindromeRecursive(String word) {
@@ -53,16 +67,4 @@ public class Palindrome {
         }
     }
 
-    private boolean isPalindromeSimpleLoop(String word) {
-        int length = word.length();
-        if (length <= 1) {
-            return true;
-        }
-        for (int i = 0; i < length / 2; i++) {
-            if (word.charAt(i) != word.charAt(length-i-1)){
-                return false;
-            }
-        }
-        return true;
-    }
 }

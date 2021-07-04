@@ -9,7 +9,7 @@ public class TestPalindrome {
     // You must use this palindrome, and not instantiate
     // new Palindromes, or the autograder might be upset.
     static Palindrome palindrome = new Palindrome();
-
+    static CharacterComparator obo = new OffByOne();
     @Test
     public void testWordToDeque() {
         Deque d = palindrome.wordToDeque("persiflage");
@@ -30,13 +30,17 @@ public class TestPalindrome {
         for (int i = 0; i < isPalindrome.length; i++) {
             assertTrue(palindrome.isPalindrome(isPalindrome[i]));
         }
-        // test recursive one, should be commented when upload
-        /*palindrome = new Palindrome(true);
+    }
+
+    @Test
+    public void testInsPalindromeOffByOne(){
+        String[] notPalindrome = {"abc", "aA", "cat", "not", "palindrome", "is"};
+        String[] isPalindrome = {"a", "d", "dabcdabe", "pabccbo", "", "flake"};
         for (int i = 0; i < notPalindrome.length; i++) {
-            assertFalse(palindrome.isPalindrome(notPalindrome[i]));
+            assertFalse(palindrome.isPalindrome(notPalindrome[i], obo));
         }
         for (int i = 0; i < isPalindrome.length; i++) {
-            assertTrue(palindrome.isPalindrome(isPalindrome[i]));
-        }*/
+            assertTrue(palindrome.isPalindrome(isPalindrome[i], obo));
+        }
     }
 }
