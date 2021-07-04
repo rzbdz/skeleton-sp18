@@ -1,8 +1,5 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class TestPalindrome {
@@ -10,6 +7,7 @@ public class TestPalindrome {
     // new Palindromes, or the autograder might be upset.
     static Palindrome palindrome = new Palindrome();
     static CharacterComparator obo = new OffByOne();
+
     @Test
     public void testWordToDeque() {
         Deque d = palindrome.wordToDeque("persiflage");
@@ -33,7 +31,7 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testInsPalindromeOffByOne(){
+    public void testInsPalindromeOffByOne() {
         String[] notPalindrome = {"abc", "aA", "cat", "not", "palindrome", "is"};
         String[] isPalindrome = {"a", "d", "dabcdabe", "pabccbo", "", "flake"};
         for (int i = 0; i < notPalindrome.length; i++) {

@@ -18,6 +18,7 @@ public class Palindrome {
         return isPalindromeSimpleLoop(word, Objects::equals);
         //return isRecursive ? isPalindromeRecursive(word) : isPalindromeWithDeque(word);
     }
+
     public boolean isPalindrome(String word, CharacterComparator cc) {
         return isPalindromeSimpleLoop(word, cc);
         //return isRecursive ? isPalindromeRecursive(word) : isPalindromeWithDeque(word);
@@ -35,15 +36,15 @@ public class Palindrome {
         return true;
     }
 
-    private boolean isPalindromeSimpleLoop(String word, CharacterComparator cc){
+    private boolean isPalindromeSimpleLoop(String word, CharacterComparator cc) {
         int length = word.length();
         if (length <= 1) {
             return true;
         }
         for (int i = 0; i < length / 2; i++) {
             char c1 = word.charAt(i);
-            char c2 = word.charAt(length-i-1);
-            if (!cc.equalChars(c1, c2)){
+            char c2 = word.charAt(length - i - 1);
+            if (!cc.equalChars(c1, c2)) {
                 return false;
             }
         }
@@ -62,8 +63,8 @@ public class Palindrome {
         if (left >= right - 1) {
             return true;
         } else {
-            return helper(word, left + 1, right - 1) &&
-                    word.charAt(left) == word.charAt(right - 1);
+            return helper(word, left + 1, right - 1)
+                    && word.charAt(left) == word.charAt(right - 1);
         }
     }
 

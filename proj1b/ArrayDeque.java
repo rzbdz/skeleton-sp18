@@ -1,4 +1,4 @@
-public class ArrayDeque<T> implements Deque{
+public class ArrayDeque<T> implements Deque {
     private Object[] items;
     private int capacity;
     private int front, rear;
@@ -57,12 +57,9 @@ public class ArrayDeque<T> implements Deque{
     }
 
 
-
-
     public int size() {
         return (rear - front + capacity) % capacity;
     }
-
 
 
     public void addFirst(Object add) {
