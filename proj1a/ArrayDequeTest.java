@@ -9,8 +9,6 @@ public class ArrayDequeTest {
             dequeAl.addLast(testArr[i]);
             dequeAf.addFirst(testArr[i]);
         }
-        dequeAf.printDeque("af: before check");
-        dequeAl.printDeque("al: before check");
         for (int i = 0; i < 10; i++) {
             acc &= dequeAf.get(i) == testArr[9 - i];
             acc &= dequeAl.get(i) == testArr[i];

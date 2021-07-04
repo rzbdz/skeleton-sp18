@@ -86,11 +86,11 @@ public class LinkedListDeque<T> {
 
     public T get(int index) {
         Node<T> tra = front.next;
-        while (tra != null && index>0) {
+        while (tra != null && index > 0) {
             index--;
             tra = tra.next;
         }
-        return (tra==null) ? tra.data : null;
+        return (tra != null) ? tra.data : null;
     }
 
     public T getRecursive(int index) {
