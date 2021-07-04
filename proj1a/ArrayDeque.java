@@ -100,7 +100,7 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
-    public void printDeque(String hint) {
+    private void printDeque(String hint) {
         int i = front;
         System.out.println(hint);
         int cnt = 0;

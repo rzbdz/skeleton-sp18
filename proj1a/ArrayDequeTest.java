@@ -1,26 +1,26 @@
 public class ArrayDequeTest {
     public static boolean testConsistency() {
-        ArrayDeque<Integer> deque_af = new ArrayDeque<Integer>();
-        ArrayDeque<Integer> deque_al = new ArrayDeque<Integer>();
+        ArrayDeque<Integer> dequeAf = new ArrayDeque<Integer>();
+        ArrayDeque<Integer> dequeAl = new ArrayDeque<Integer>();
 
         boolean acc = true;
         int[] testArr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         for (int i = 0; i < 10; i++) {
-            deque_al.addLast(testArr[i]);
-            deque_af.addFirst(testArr[i]);
+            dequeAl.addLast(testArr[i]);
+            dequeAf.addFirst(testArr[i]);
         }
-        deque_af.printDeque("af: before check");
-        deque_al.printDeque("al: before check");
+        dequeAf.printDeque("af: before check");
+        dequeAl.printDeque("al: before check");
         for (int i = 0; i < 10; i++) {
-            acc &= deque_af.get(i) == testArr[9 - i];
-            acc &= deque_al.get(i) == testArr[i];
+            acc &= dequeAf.get(i) == testArr[9 - i];
+            acc &= dequeAl.get(i) == testArr[i];
         }
-        acc &= (deque_af.size() == 10) && (deque_al.size() == 10);
+        acc &= (dequeAf.size() == 10) && (dequeAl.size() == 10);
         for (int i = 0; i < 10; i++) {
-            acc &= deque_af.removeFirst() == testArr[9 - i];
-            acc &= deque_af.size() == 10 - i - 1;
-            acc &= deque_al.removeFirst() == testArr[i];
-            acc &= deque_al.size() == 10 - i - 1;
+            acc &= dequeAf.removeFirst() == testArr[9 - i];
+            acc &= dequeAf.size() == 10 - i - 1;
+            acc &= dequeAl.removeFirst() == testArr[i];
+            acc &= dequeAl.size() == 10 - i - 1;
         }
         return acc;
     }

@@ -86,15 +86,15 @@ public class LinkedListDeque<T> {
 
     public T get(int index) {
         Node<T> tra = front.next;
-        while (tra != null) {
+        while (tra != null && index>0) {
             index--;
             tra = tra.next;
         }
-        return (index == 0) ? tra.data : null;
+        return (tra==null) ? tra.data : null;
     }
 
     public T getRecursive(int index) {
-        if (index < size()) {
+        if (index >= size()) {
             return null;
         }
         return getHelper(index, this.front.next);
@@ -104,7 +104,7 @@ public class LinkedListDeque<T> {
         if (index == 0) {
             return root.data;
         } else {
-            return getHelper(index-1, root.next);
+            return getHelper(index - 1, root.next);
         }
     }
 }
