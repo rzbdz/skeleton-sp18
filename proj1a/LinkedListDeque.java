@@ -1,10 +1,10 @@
-public class LinkedListDeque<T> implements Deque<T> {
+public class LinkedListDeque<T> {
     private class Node<T> {
-        public T data;
-        public Node<T> next = null;
-        public Node<T> prev = null;
+        T data;
+        Node<T> next = null;
+        Node<T> prev = null;
 
-        public Node(T data) {
+        Node(T data) {
             this.data = data;
             next = null;
             prev = null;
@@ -25,12 +25,12 @@ public class LinkedListDeque<T> implements Deque<T> {
         this.count = 0;
     }
 
-    @Override
+
     public boolean isEmpty() {
         return count == 0;
     }
 
-    @Override
+
     public void addFirst(T add) {
         Node<T> rest = this.front.next;
         this.front.next = new Node(add);
@@ -40,12 +40,12 @@ public class LinkedListDeque<T> implements Deque<T> {
         count++;
     }
 
-    @Override
+
     public int size() {
         return count;
     }
 
-    @Override
+
     public void addLast(T add) {
         Node<T> rest = this.rear.prev;
         this.rear.prev = new Node(add);
@@ -55,13 +55,15 @@ public class LinkedListDeque<T> implements Deque<T> {
         count++;
     }
 
-    @Override
+
     public void printDeque() {
     }
 
-    @Override
+
     public T removeFirst() {
-        if (size() == 0) return null;
+        if (size() == 0) {
+            return null;
+        }
         T tmp = this.front.next.data;
         this.front.next = this.front.next.next;
         this.front.next.prev = this.front;
@@ -69,9 +71,11 @@ public class LinkedListDeque<T> implements Deque<T> {
         return tmp;
     }
 
-    @Override
+
     public T removeLast() {
-        if (size() == 0) return null;
+        if (size() == 0) {
+            return null;
+        }
         T tmp = this.rear.prev.data;
         this.rear.prev.prev.next = this.rear;
         this.rear.prev = this.rear.prev.prev;
@@ -79,7 +83,7 @@ public class LinkedListDeque<T> implements Deque<T> {
         return tmp;
     }
 
-    @Override
+
     public T get(int index) {
         Node<T> tra = front.next;
         while (tra != null) {
@@ -87,5 +91,20 @@ public class LinkedListDeque<T> implements Deque<T> {
             tra = tra.next;
         }
         return (index == 0) ? tra.data : null;
+    }
+
+    public T getRecursive(int index) {
+        if (index < size()) {
+            return null;
+        }
+        return getHelper(index, this.front.next);
+    }
+
+    private T getHelper(int index, Node<T> root) {
+        if (index == 0) {
+            return root.data;
+        } else {
+            return getHelper(index-1, root.next);
+        }
     }
 }
