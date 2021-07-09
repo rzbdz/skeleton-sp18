@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +13,12 @@ import java.util.zip.GZIPInputStream;
  */
 public class TTFAF {
     public static void main(String[] args) {
+        testBase64();
+
+        // You can also do this:
+    }
+
+    private static void testBase64() {
         try {
             InputStream source = new ByteArrayInputStream(Base64.getDecoder().decode(TTFAF));
             source = new GZIPInputStream(source);
@@ -20,10 +27,6 @@ public class TTFAF {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // You can also do this:
-        // GuitarPlayer player = new GuitarPlayer(new java.io.File("path/to/music.mid"));
-        // player.play();
     }
 
     private static final String TTFAF =
