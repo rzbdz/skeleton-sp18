@@ -39,8 +39,9 @@ public class TestArrayRingBuffer {
             for (int i = 0; i < 10; i++) {
                 arb.enqueue(i);
             }
-        }catch(Exception e){
-            Assert.assertEquals("Didn't throw correspond exception", "Ring buffer overflow",e.getMessage());
+        } catch (RuntimeException e) {
+            Assert.assertEquals("Didn't throw correspond exception",
+                    "Ring buffer overflow", e.getMessage());
         }
     }
 
