@@ -19,8 +19,8 @@ public class Percolation {
 
     /* create N-by-N grid, with all sites initially blocked*/
     public Percolation(int N) {
-        if (N < 0) {
-            throw new IndexOutOfBoundsException("grid size must be positive");
+        if (N <= 0) {
+            throw new IllegalArgumentException("grid size must be positive");
         }
         this.size = N;
         this.ufBottom = (size + 2) * size - 1;
@@ -88,7 +88,7 @@ public class Percolation {
 
     /* use for unit testing (not required)*/
     public static void main(String[] args) {
-        Percolation p = new Percolation(6);
+        Percolation p = new Percolation(3);
         for (int i = 0; i < 6; i++) {
             p.open(i, i);
         }

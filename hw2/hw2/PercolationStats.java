@@ -4,13 +4,12 @@ import edu.princeton.cs.introcs.StdRandom;
 import edu.princeton.cs.introcs.StdStats;
 
 public class PercolationStats {
-    double[] thresholds;
-    PercolationFactory pf;
-    int size;
-    int times;
-
+    final private double[] thresholds;
+    final private PercolationFactory pf;
+    final private int size;
+    final private int times;
     public static void main(String[] args) {
-        PercolationStats ps = new PercolationStats(200, 40, new PercolationFactory());
+        PercolationStats ps = new PercolationStats(3, 4000, new PercolationFactory());
         System.out.println(ps.confidenceHigh());
         System.out.println(ps.confidenceLow());
     }
