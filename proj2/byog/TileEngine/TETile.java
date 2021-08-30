@@ -96,6 +96,7 @@ public class TETile {
         StdDraw.filledSquare(x + 0.5, y + 0.5, 0.5);
         StdDraw.setPenColor(textColor);
         StdDraw.text(x + 0.5, y + 0.5, Character.toString(character()));
+
     }
 
     /** Character representation of the tile. Used for drawing in text mode.
